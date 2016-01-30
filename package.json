@@ -1,6 +1,6 @@
 {
   "name": "mingkwai",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "眀快【랙】 MingKwai(Rack), the frame to mount various plugins for typesetting and CJK character search",
   "main": "lib/main.js",
   "scripts": {
