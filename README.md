@@ -1,4 +1,3 @@
-coffeenode-mingkwai
-===================
+#  眀快【랙】 MingKwai(Rack)
 
-眀快搜字機 MingKwai Type Tool  A web front end for the MojiKura database
+眀快【랙】 MingKwai(Rack) is a 'frame-app' to mount various plugins for typesetting and CJK character search",
