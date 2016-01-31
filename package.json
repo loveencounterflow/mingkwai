@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/loveencounterflow/mingkwai/issues"
   },
+  "peerDependencies": {
+    "mingkwai-typesetter": "1.x",
+    "mingkwai-typesetter-jizura": "1.x"
+  },
   "homepage": "https://github.com/loveencounterflow/mingkwai"
 }
