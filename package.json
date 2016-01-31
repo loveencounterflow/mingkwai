@@ -4,7 +4,9 @@
   "description": "眀快【랙】 MingKwai(Rack), the frame to mount various plugins for typesetting and CJK character search",
   "main": "lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp --harmony build",
+    "mkts": "node --harmony lib/cli.js mkts $2",
+    "test": "npm run build && node --harmony lib/tests.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,11 @@
     "mingkwai-typesetter": "1.x",
     "mingkwai-typesetter-jizura": "1.x"
   },
-  "homepage": "https://github.com/loveencounterflow/mingkwai"
+  "homepage": "https://github.com/loveencounterflow/mingkwai",
+  "dependencies": {
+    "cnd": "^1.0.9",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0"
+  }
 }
