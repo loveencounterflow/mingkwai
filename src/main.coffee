@@ -10,7 +10,7 @@ njs_path                  = require 'path'
 #...........................................................................................................
 CND                       = require 'cnd'
 rpr                       = CND.rpr
-badge                     = 'MINGKWAI/main'
+badge                     = 'MK/main'
 log                       = CND.get_logger 'plain',     badge
 info                      = CND.get_logger 'info',      badge
 whisper                   = CND.get_logger 'whisper',   badge
@@ -20,35 +20,35 @@ warn                      = CND.get_logger 'warn',      badge
 help                      = CND.get_logger 'help',      badge
 urge                      = CND.get_logger 'urge',      badge
 echo                      = CND.echo.bind CND
-# #...........................................................................................................
-# suspend                   = require 'coffeenode-suspend'
-# step                      = suspend.step
-# #...........................................................................................................
+#...........................................................................................................
+@PLUGIN_MANAGER           = require './plugin-manager'
 # D                         = require 'pipedreams'
-# $                         = D.remit.bind D
-# $async                    = D.remit_async.bind D
+#...........................................................................................................
+### Registering global `MK` that represents this app rack. ###
+### NB we could do this using `Symbol.for 'MK'` to obtain better namespace separation ###
+global.MK                 = @
+global.MK.TS              = require 'mingkwai-typesetter'
 
 
-debug '©69647', Object.keys global.MKTS = require 'mingkwai-typesetter'
-# debug '©32489', Object.keys require.main.require 'mingkwai-typesetter-jizura'
 
-
-# route     = njs_path.resolve process.cwd(), 'node_modules'
-route     = njs_path.resolve __dirname, '../node_modules'
-help '7238', process.cwd()
-help '7238', route
-plugins   = {}
-# plugin_info_by_routes = @PLUGIN_MANAGER.find_plugin_package_infos route, { keyword: 'peerDependencies', }
-plugin_info_by_routes = MKTS.PLUGIN_MANAGER.find_plugin_package_infos route #, { keyword: 'ansi', }
-for plugin_route, plugin_info of plugin_info_by_routes
-  plugin_name = plugin_info[ 'name' ]
-  debug '234627', plugin_route
-  plugins[ plugin_name ] = require plugin_route
-
-# urge '93274', Object.keys @TEX_WRITER
-for plugin_name, plugin of plugins
-  urge '93274', plugin_name, Object.keys plugin
-
+#===========================================================================================================
+# REGISTER PLUGINS (PRE-ALPHA)
+#-----------------------------------------------------------------------------------------------------------
+do ->
+  ### To get started with plugins handling, we'll assume that all plugins are installed (or linked) in the
+  MINGKWAI(rack) `node_modules` folder, and that all plugins are to be inserted after the producing
+  end of the MD read stream and before the consuming end of the TeX write stream. At this point there will
+  be no particular ordering between plugins. ###
+  plugin_home           = njs_path.resolve __dirname, '../node_modules'
+  plugin_info_by_routes = MK.PLUGIN_MANAGER.find_plugin_package_infos plugin_home
+  MK.TS.plugins         = []
+  #.........................................................................................................
+  for plugin_route, plugin_info of plugin_info_by_routes
+    plugin_name   = plugin_info[ 'name' ]
+    plugin        = require plugin_route
+    MK.TS.plugins.push plugin
+  #.........................................................................................................
+  return null
 
 
 

@@ -27,8 +27,12 @@
   "homepage": "https://github.com/loveencounterflow/mingkwai",
   "dependencies": {
     "cnd": "^1.0.9",
+    "coffeenode-suspend": "^0.1.11",
+    "commander": "^2.9.0",
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sourcemaps": "^1.6.0",
+    "pipedreams": "^3.0.5",
+    "source-map-support": "^0.4.0"
   }
 }

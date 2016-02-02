@@ -9,7 +9,7 @@
 #...........................................................................................................
 CND                       = require 'cnd'
 rpr                       = CND.rpr
-badge                     = 'JIZURA/cli'
+badge                     = 'MK/cli'
 log                       = CND.get_logger 'plain',     badge
 info                      = CND.get_logger 'info',      badge
 whisper                   = CND.get_logger 'whisper',   badge
@@ -41,7 +41,6 @@ echo                      = CND.echo.bind CND
 
 
 
-
 app       = require 'commander'
 app_name  = process.argv[ 1 ]
 
@@ -50,8 +49,9 @@ app
   .command 'mkts <filename>'
   .action ( filename ) ->
     help ( CND.grey "#{app_name}" ), ( CND.gold 'mkts' ), ( CND.lime filename )
-    MKTS = require './main'
-    MKTS.TEX_WRITER.pdf_from_md filename
+    ### Needed to register global `MK` ###
+    require './main'
+    MK.TS.TEX_WRITER.pdf_from_md filename
 
 app.parse process.argv
 # debug '©nES6R', process.argv
