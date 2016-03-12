@@ -51,8 +51,14 @@ app
     help ( CND.grey "#{app_name}" ), ( CND.gold 'mkts' ), ( CND.lime filename )
     ### Needed to register global `MK` ###
     require './main'
-    MK.TS.TEX_WRITER.pdf_from_md filename
+    MK.TS.TEX_WRITER.pdf_from_md filename, ( error ) =>
+      throw error if error?
+      help "finished on #{new Date()}"
 
 app.parse process.argv
 # debug '©nES6R', process.argv
+
+
+
+
 
