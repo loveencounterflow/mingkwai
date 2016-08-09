@@ -38,7 +38,16 @@ isa_folder                = ( route ) -> ( njs_fs.statSync route ).isDirectory()
     continue if plugin_name.startsWith '.'
     plugin_route = join plugin_home, plugin_name
     continue unless isa_folder plugin_route
-    package_info    = require join plugin_route, 'package.json'
+    #.......................................................................................................
+    try
+      package_info    = require join plugin_route, 'package.json'
+    #.......................................................................................................
+    catch error
+      { message, } = error
+      warn message
+      continue if message.startsWith 'Cannot find module '
+      throw error
+    #.......................................................................................................
     if ( keywords = package_info[ 'keywords' ] )?
       R[ plugin_route ] = package_info if keyword in keywords
   #.........................................................................................................
