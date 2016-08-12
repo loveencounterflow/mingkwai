@@ -37,6 +37,7 @@ echo                      = CND.echo.bind CND
 # MKTS                      = require './main'
 
 
+# require( '/usr/local/lib/node_modules/longjohn' );
 
 app       = require 'commander'
 app_name  = process.argv[ 1 ]
@@ -53,7 +54,7 @@ app
       help "finished on #{new Date()}"
 
 app.parse process.argv
-# debug '©nES6R', process.argv
+debug '©nES6R', process.argv
 
 
 
