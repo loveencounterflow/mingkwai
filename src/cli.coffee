@@ -54,7 +54,6 @@ app
       help "finished on #{new Date()}"
 
 app.parse process.argv
-debug '©nES6R', process.argv
 
 
 
