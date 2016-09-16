@@ -31,6 +31,7 @@ isa_folder                = ( route ) -> ( njs_fs.statSync route ).isDirectory()
 #-----------------------------------------------------------------------------------------------------------
 @find_plugin_package_infos = ( plugin_home, settings ) ->
   keyword       = settings?[ 'keyword' ] ? 'mingkwai-typesetter-plugin'
+  help "looking for #{keyword} in #{plugin_home}"
   plugin_names  = njs_fs.readdirSync plugin_home
   R             = {}
   #.........................................................................................................
@@ -44,12 +45,15 @@ isa_folder                = ( route ) -> ( njs_fs.statSync route ).isDirectory()
     #.......................................................................................................
     catch error
       { message, } = error
-      warn message
-      continue if message.startsWith 'Cannot find module '
+      if message.startsWith 'Cannot find module '
+        warn "#{message} (ok)"
+        continue
       throw error
     #.......................................................................................................
     if ( keywords = package_info[ 'keywords' ] )?
-      R[ plugin_route ] = package_info if keyword in keywords
+      if keyword in keywords
+        urge "found #{keyword}: #{plugin_route}"
+        R[ plugin_route ] = package_info
   #.........................................................................................................
   return R
 

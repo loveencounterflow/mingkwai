@@ -36,10 +36,11 @@ global.MK.TS              = require 'mingkwai-typesetter'
 #-----------------------------------------------------------------------------------------------------------
 do ->
   ### To get started with plugins handling, we'll assume that all plugins are installed (or linked) in the
-  MINGKWAI(rack) `node_modules` folder, and that all plugins are to be inserted after the producing
+  MINGKWAI(rack) folder, and that all plugins are to be inserted after the producing
   end of the MD read stream and before the consuming end of the TeX write stream. At this point there will
   be no particular ordering between plugins. ###
-  plugin_home           = njs_path.resolve __dirname, '../node_modules'
+  # plugin_home           = njs_path.resolve __dirname, '../node_modules'
+  plugin_home           = njs_path.resolve __dirname, '../..'
   plugin_info_by_routes = MK.PLUGIN_MANAGER.find_plugin_package_infos plugin_home
   MK.TS.plugins         = []
   #.........................................................................................................
