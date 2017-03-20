@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/loveencounterflow/mingkwai",
   "dependencies": {
-    "cnd": "^4.1.1",
+    "cnd": "^4.2.2",
     "coffeenode-suspend": "^0.1.11",
     "commander": "^2.9.0",
     "pipedreams": "^3.0.8"
